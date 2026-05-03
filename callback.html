@@ -128,11 +128,10 @@
             codeBoxEl.style.display = 'block';
             codeBoxEl.textContent = `code: ${code}`;
 
-            // Send code to your server to exchange for token
-            // Change this URL to your server address
-            const SERVER_URL = 'http://localhost:3000';
+            // Send code to server via ngrok (works from phone & desktop)
+            const NGROK_URL = 'https://raspiest-unprophetically-wan.ngrok-free.dev';
 
-            fetch(`${SERVER_URL}/api/tiktok/callback`, {
+            fetch(`${NGROK_URL}/webhook/tiktok-callback`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ code: code, state: state }),
