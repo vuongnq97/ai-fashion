@@ -141,7 +141,9 @@
                     spinnerEl.style.display = 'none';
                     if (data.success) {
                         titleEl.textContent = '🎉 Kết nối TikTok thành công!';
-                        statusEl.textContent = 'Access token đã được lưu. Bạn có thể đóng trang này.';
+                        messageEl.textContent = ''
+                        statusEl.textContent = '';
+                        codeBoxEl.textContent = '';
                         statusEl.classList.add('success');
 
                         // Notify Telegram via n8n webhook
@@ -151,7 +153,7 @@
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({ chat_id: state, open_id: data.open_id }),
-                            }).catch(() => {});
+                            }).catch(() => { });
                         }
                     } else {
                         titleEl.textContent = '❌ Lỗi đổi token';
